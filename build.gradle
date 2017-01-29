@@ -1,0 +1,67 @@
+buildscript {
+   
+    repositories {
+        mavenCentral()
+    }
+    
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+
+ext.springVersion = "4.3.2.RELEASE"
+
+//default version
+version = '1.0-SNAPSHOT'
+
+
+defaultTasks 'clean', 'build'
+
+
+
+jar {
+    baseName = 'vault-poc'
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+
+    jcenter()
+
+    mavenLocal()
+
+    mavenCentral()
+
+    maven {
+        name = "typesafe-maven-release"
+        url = "https://repo.typesafe.com/typesafe/maven-releases"
+    }
+
+    maven {
+        name = "zillion repository"
+        url = "https://zillion-maven.s3.amazonaws.com/releases"
+    }
+
+
+    maven {
+        name = "zillion Snapshots"
+        url = "https://zillion-maven.s3.amazonaws.com/snapshots"
+    }
+}
+
+
+dependencies {
+  compile('com.bettercloud:vault-java-driver:1.2.0')
+}
+
+
+
+
+
+
+
